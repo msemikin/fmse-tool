@@ -10,8 +10,9 @@ def get_states(lts):
 
 def generate_diagram(lts, filename):
     dot = Digraph()
-    for state in get_states(lts):
-        dot.node(', '.join(state))
+    for state in set(get_states(lts)):
+        print(state == lts.initial_state)
+        dot.node(', '.join(state), style='filled', fillcolor='grey' if state == lts.initial_state else 'white')
     for from_state, token, to_state in lts.transitions:
         dot.edge(', '.join(from_state), ', '.join(to_state), label=token)
     dot.render(filename, directory='result')
