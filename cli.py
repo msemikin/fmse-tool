@@ -11,7 +11,7 @@ Options:
 
 """
 from docopt import docopt
-from parser import parse_lts
+from input_parser import parse_lts
 from diagram_generator import generate_diagram
 from LTS import compose_lts
 
