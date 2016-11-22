@@ -1,0 +1,6 @@
+NOWATTER
+NOWATTER press WATER2
+WATER2 headWater WATER3
+WATER3 dispenseCoffeePowder WATER4
+WATER4 pourWater WATER5
+WATER5 finish WATER
