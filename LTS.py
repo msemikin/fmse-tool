@@ -4,6 +4,12 @@ Transition = namedtuple('Transition', 'from_state, token, to_state')
 LTS = namedtuple('LTS', 'transitions, initial_state')
 
 
+def get_states(lts):
+    for transition in lts.transitions:
+        yield transition.from_state
+        yield transition.to_state
+
+
 def get_transitions_from_state(transitions, state):
     return {
         transition

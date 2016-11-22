@@ -1,11 +1,5 @@
 from graphviz import Digraph
-from LTS import LTS, Transition
-
-
-def get_states(lts):
-    for transition in lts.transitions:
-        yield transition.from_state
-        yield transition.to_state
+from LTS import LTS, Transition, get_states
 
 
 def generate_diagram(lts, filename):
