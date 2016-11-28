@@ -1,5 +1,6 @@
 import unittest
-from LTS import *
+
+from src.LTS import *
 
 
 class LTSTest(unittest.TestCase):

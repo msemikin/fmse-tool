@@ -1,5 +1,6 @@
 from graphviz import Digraph
-from LTS import LTS, Transition, get_states
+
+from src.LTS import LTS, Transition, get_states
 
 
 def generate_diagram(lts, filename):

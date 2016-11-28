@@ -1,6 +1,7 @@
 from collections import namedtuple
-from LTS import compose_lts, get_states
 from itertools import chain
+
+from src.LTS import compose_lts, get_states
 
 """
 transitions is a set of Transition objects

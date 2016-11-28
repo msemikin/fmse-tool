@@ -10,10 +10,11 @@ Options:
   --version     Show version.
 
 """
+from diagram_generator import generate_diagram
 from docopt import docopt
 from input_parser import parse_lts
-from diagram_generator import generate_diagram
-from LTS import compose_lts
+
+from src.LTS import compose_lts
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
