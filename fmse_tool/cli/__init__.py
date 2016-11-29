@@ -10,14 +10,16 @@ Options:
   --version     Show version.
 
 """
+from fmse_tool.cli.diagram_generator import generate_diagram
 from docopt import docopt
 
-from cli.diagram_generator import generate_diagram
-from cli.input_parser import parse_lts
+from fmse_tool.cli.input_parser import parse_lts
 
-if __name__ == '__main__':
+
+def main():
     arguments = docopt(__doc__)
 
+    print(arguments)
     first_filename = arguments['<file1>']
     second_filename = arguments['<file2>']
     first_lts = parse_lts(first_filename)

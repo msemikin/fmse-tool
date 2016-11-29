@@ -1,9 +1,10 @@
 import unittest
 
 from AST.ExistsGloballyNode import ExistsGloballyNode
-from model.LTS import LTS
-from model.Transition import Transition
 from AST.TrueNode import TrueNode
+from model.LTS import LTS
+
+from fmse_tool.model.Transition import Transition
 
 
 class ASTTest(unittest.TestCase):

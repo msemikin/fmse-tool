@@ -1,4 +1,4 @@
-from model.Transition import Transition
+from fmse_tool.model.Transition import Transition
 
 
 class LTS(object):

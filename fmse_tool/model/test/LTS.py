@@ -1,7 +1,8 @@
 import unittest
 
 from model.LTS import LTS
-from model.Transition import Transition
+
+from fmse_tool.model.Transition import Transition
 
 
 class LTSTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 from itertools import chain
 
-from model import LTS
+from fmse_tool.model import LTS
 
 
 class CTLLTS(LTS):

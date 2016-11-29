@@ -1,4 +1,4 @@
-from AST.Node import Node
+from fmse_tool.AST.Node import Node
 
 
 class ExistsNextNode(Node):

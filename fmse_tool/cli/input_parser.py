@@ -1,4 +1,4 @@
-from model.LTS import LTS, Transition
+from fmse_tool.model.LTS import LTS, Transition
 
 
 def parse_lts(filename):

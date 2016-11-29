@@ -1,6 +1,8 @@
 from itertools import chain
-from AST.Node import Node
-from AST.common_algorithms import find_states_predecessors
+
+from fmse_tool.AST.Node import Node
+
+from fmse_tool.AST.common_algorithms import find_states_predecessors
 
 
 class ExistsGloballyNode(Node):
