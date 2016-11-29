@@ -7,7 +7,7 @@ class AtomicPropositionNode(Node):
         self.atomic_proposition = atomic_proposition
 
     def evaluate(self, states):
-        return [
+        return {
             state for state in states
             if (self.atomic_proposition in self.lts.labellings[state])
-        ]
+        }
