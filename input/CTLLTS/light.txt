@@ -1,0 +1,8 @@
+off
+off press low
+low hold high
+high press off
+low press off
+
+low: lightOn
+high: lightOn, highBatteryUse

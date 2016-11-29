@@ -1,8 +1,8 @@
 import unittest
 
-from AST.ExistsGloballyNode import ExistsGloballyNode
-from AST.TrueNode import TrueNode
-from model.LTS import LTS
+from fmse_tool.AST.ExistsGloballyNode import ExistsGloballyNode
+from fmse_tool.AST.TrueNode import TrueNode
+from fmse_tool.model.LTS import LTS
 
 from fmse_tool.model.Transition import Transition
 

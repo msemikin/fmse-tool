@@ -7,6 +7,9 @@ class LTS(object):
         self.initial_state = initial_state
 
     def get_states(self):
+        return set(self._get_states_iter())
+
+    def _get_states_iter(self):
         for transition in self.transitions:
             yield transition.from_state
             yield transition.to_state

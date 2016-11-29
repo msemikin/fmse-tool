@@ -1,10 +1,10 @@
 from itertools import chain
+from string import Template
 
-from fmse_tool.model import LTS
+from fmse_tool.model.LTS import LTS
 
 
 class CTLLTS(LTS):
-
     def __init__(self, transitions, initial_state, labellings):
         """
         labellings is a dictionary {state: set[str]}
@@ -17,7 +17,7 @@ class CTLLTS(LTS):
         original_labellings = [self.labellings, second_lts.labellings]
         labellings = {
             state: self.get_result_labelling(original_labellings, state)
-            for state in composed.get_state
+            for state in composed.get_states()
         }
         return CTLLTS(
             composed.transitions,
@@ -28,8 +28,21 @@ class CTLLTS(LTS):
     @staticmethod
     def get_result_labelling(original_labellings, state):
         return set(chain.from_iterable(
-            labelling[atom]
+            labelling[(atom,)]
             for atom in state
-            for labelling in original_labellings)
-        )
+            for labelling in original_labellings
+            if (atom,) in labelling
+        ))
+
+    def __str__(self):
+        template = Template("""
+            initial_state: $initial_state,
+            transitions: $transitions,
+            labellings: $labellings,
+        """)
+        return template.substitute({
+            'initial_state': self.initial_state,
+            'transitions': self.transitions,
+            'labellings': self.labellings,
+        })
 
