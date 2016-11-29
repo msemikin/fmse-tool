@@ -1,4 +1,4 @@
-from src.LTS import LTS, Transition
+from model.LTS import LTS, Transition
 
 
 def parse_lts(filename):

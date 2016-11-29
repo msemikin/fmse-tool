@@ -10,11 +10,10 @@ Options:
   --version     Show version.
 
 """
-from diagram_generator import generate_diagram
 from docopt import docopt
-from input_parser import parse_lts
 
-from src.LTS import compose_lts
+from cli.diagram_generator import generate_diagram
+from cli.input_parser import parse_lts
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
@@ -25,6 +24,6 @@ if __name__ == '__main__':
     second_lts = parse_lts(second_filename)
     generate_diagram(first_lts, first_filename)
     generate_diagram(second_lts, second_filename)
-    composed_lts = compose_lts(first_lts, second_lts)
+    composed_lts = first_lts.compose(second_lts)
     generate_diagram(composed_lts, 'result')
 

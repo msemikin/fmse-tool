@@ -1,6 +1,7 @@
 import unittest
 
-from src.LTS import *
+from model.LTS import LTS
+from model.Transition import Transition
 
 
 class LTSTest(unittest.TestCase):
@@ -32,7 +33,7 @@ class LTSTest(unittest.TestCase):
         }
 
         # act
-        result = compose_lts(first_lts, second_lts)
+        result = first_lts.compose(second_lts)
 
         # assert
         self.assertEqual(set(result.transitions), set(result_transitions))
