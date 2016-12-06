@@ -10,13 +10,16 @@ def generate_diagram(lts, filename):
     dot.render(filename, directory='result')
 
 
-def generate_extended_diagram(lts, filename):
+def generate_extended_diagram(lts, valid_states, filename):
     dot = Digraph()
     for state in set(lts.get_states()):
         dot.node(
             ', '.join(state),
             style='filled',
-            fillcolor='grey' if state == lts.initial_state else 'white',
+            fillcolor='darkgreen' if state == lts.initial_state and state in valid_states
+                else 'green' if state in valid_states
+                else 'grey' if state == lts.initial_state
+                else 'white',
             xlabel=', '.join(lts.labellings[state]),
             forcelabels='True'
         )

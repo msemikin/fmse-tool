@@ -35,7 +35,7 @@ def main():
         light = parse_ctl_lts('./input/CTLLTS/light.txt')
         switch = parse_ctl_lts('./input/CTLLTS/switch.txt')
         composed = light.compose(switch)
-        generate_extended_diagram(composed, 'result')
+        generate_extended_diagram(composed, set(), 'result')
 
         tests = [
             "EF 'lightOn'",
@@ -45,8 +45,9 @@ def main():
             "AG 'highBatteryUse'"
         ]
 
-        for test in tests:
+        for (i, test) in enumerate(tests):
             result = parser.parse(test).evaluate(composed, composed.get_states())
+            generate_extended_diagram(composed, result, 'result' + str(i))
             print(test + ": " + str(result))
 
 
