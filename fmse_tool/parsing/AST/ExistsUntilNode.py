@@ -8,8 +8,8 @@ class ExistsUntilNode(Node):
         self.until_condition = until_condition
 
     def evaluate(self, lts, states):
-        valid_predecessors = self.condition(states)
-        final_states = self.until_condition(states)
+        valid_predecessors = self.condition.evaluate(lts, states)
+        final_states = self.until_condition.evaluate(lts, states)
         predecessors = find_states_predecessors(
             lts,
             final_states,

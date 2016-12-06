@@ -7,8 +7,12 @@ grammar and parsing for the CTL formula DSL
 import ply.lex as lex
 
 tokens = (
+    'AP',
     'ALWAYS',
     'EXISTS',
+    'NEXT',
+    'GLOBALLY',
+    'FINALLY',
     'UNTIL',
     'AND',
     'OR',
@@ -29,6 +33,9 @@ def t_AP(t):
 
 t_ALWAYS = r'A'
 t_EXISTS = r'E'
+t_NEXT = r'X'
+t_GLOBALLY = r'G'
+t_FINALLY = r'F'
 t_UNTIL = r'U'
 t_AND = r'and'
 t_OR = r'or'

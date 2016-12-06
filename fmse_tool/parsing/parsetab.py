@@ -5,9 +5,9 @@ _tabversion = '3.8'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'C368F8BD47A14FA860E3C9C21EC53558'
+_lr_signature = '13CAA6C23883E4FDEC1C8CABD3F25D34'
     
-_lr_action_items = {'AND':([1,2,4,5,6,7,10,11,12,14,15,19,20,21,22,23,25,26,],[-9,-4,17,-3,-5,-7,-1,-8,-2,-6,17,17,17,17,17,17,17,-12,]),'R_BRACKET':([1,2,5,6,7,10,11,12,14,15,19,20,21,22,25,26,],[-9,-4,-3,-5,-7,-1,-8,-2,-6,-11,-13,-10,-15,-14,26,-12,]),'OR':([1,2,4,5,6,7,10,11,12,14,15,19,20,21,22,23,25,26,],[-9,-4,16,-3,-5,-7,-1,-8,-2,-6,16,16,16,16,16,16,16,-12,]),'L_BRACKET':([8,],[18,]),'EG':([0,3,9,13,16,17,18,24,],[3,3,3,3,3,3,3,3,]),'TRUE':([0,3,9,13,16,17,18,24,],[6,6,6,6,6,6,6,6,]),'EU':([0,3,9,13,16,17,18,24,],[8,8,8,8,8,8,8,8,]),'EXCLAMATION':([0,3,9,13,16,17,18,24,],[9,9,9,9,9,9,9,9,]),'AP':([0,3,9,13,16,17,18,24,],[10,10,10,10,10,10,10,10,]),'$end':([1,2,4,5,6,7,10,11,12,14,15,19,20,21,22,26,],[-9,-4,0,-3,-5,-7,-1,-8,-2,-6,-11,-13,-10,-15,-14,-12,]),'EX':([0,3,9,13,16,17,18,24,],[13,13,13,13,13,13,13,13,]),'FALSE':([0,3,9,13,16,17,18,24,],[14,14,14,14,14,14,14,14,]),'UNTIL':([1,2,5,6,7,10,11,12,14,15,19,20,21,22,23,26,],[-9,-4,-3,-5,-7,-1,-8,-2,-6,-11,-13,-10,-15,-14,24,-12,]),}
+_lr_action_items = {'FINALLY':([1,2,3,],[13,-9,-10,]),'ALWAYS':([0,12,13,14,17,19,22,23,31,],[2,2,2,2,2,2,2,2,2,]),'EXISTS':([0,12,13,14,17,19,22,23,31,],[3,3,3,3,3,3,3,3,3,]),'AP':([0,12,13,14,17,19,22,23,31,],[7,7,7,7,7,7,7,7,7,]),'FALSE':([0,12,13,14,17,19,22,23,31,],[6,6,6,6,6,6,6,6,6,]),'L_BRACKET':([1,2,3,],[14,-9,-10,]),'UNTIL':([4,5,6,7,8,10,11,15,16,18,20,21,24,25,26,27,28,29,30,33,],[-5,-3,-4,-1,-6,-7,-2,-14,-12,-11,-13,-8,-19,-17,31,-16,-15,-21,-20,-18,]),'R_BRACKET':([4,5,6,7,8,10,11,15,16,18,20,21,24,25,27,28,29,30,32,33,],[-5,-3,-4,-1,-6,-7,-2,-14,-12,-11,-13,-8,-19,-17,-16,-15,-21,-20,33,-18,]),'GLOBALLY':([1,2,3,],[17,-9,-10,]),'$end':([4,5,6,7,8,9,10,11,15,16,18,20,21,24,25,27,28,29,30,33,],[-5,-3,-4,-1,-6,0,-7,-2,-14,-12,-11,-13,-8,-19,-17,-16,-15,-21,-20,-18,]),'AND':([4,5,6,7,8,9,10,11,15,16,18,20,21,24,25,26,27,28,29,30,32,33,],[-5,-3,-4,-1,-6,23,-7,-2,-14,-12,-11,-13,-8,23,23,23,23,23,23,23,23,-18,]),'NEXT':([1,2,3,],[19,-9,-10,]),'EXCLAMATION':([0,12,13,14,17,19,22,23,31,],[12,12,12,12,12,12,12,12,12,]),'OR':([4,5,6,7,8,9,10,11,15,16,18,20,21,24,25,26,27,28,29,30,32,33,],[-5,-3,-4,-1,-6,22,-7,-2,-14,-12,-11,-13,-8,22,22,22,22,22,22,22,22,-18,]),'TRUE':([0,12,13,14,17,19,22,23,31,],[5,5,5,5,5,5,5,5,5,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'not':([0,3,9,13,16,17,18,24,],[7,7,7,7,7,7,7,7,]),'and':([0,3,9,13,16,17,18,24,],[1,1,1,1,1,1,1,1,]),'eu':([0,3,9,13,16,17,18,24,],[2,2,2,2,2,2,2,2,]),'or':([0,3,9,13,16,17,18,24,],[11,11,11,11,11,11,11,11,]),'ex':([0,3,9,13,16,17,18,24,],[12,12,12,12,12,12,12,12,]),'formula':([0,3,9,13,16,17,18,24,],[4,15,19,20,21,22,23,25,]),'eg':([0,3,9,13,16,17,18,24,],[5,5,5,5,5,5,5,5,]),}
+_lr_goto_items = {'path_quantifier':([0,12,13,14,17,19,22,23,31,],[1,1,1,1,1,1,1,1,1,]),'globally':([1,],[16,]),'finally':([1,],[20,]),'or':([0,12,13,14,17,19,22,23,31,],[8,8,8,8,8,8,8,8,8,]),'not':([0,12,13,14,17,19,22,23,31,],[4,4,4,4,4,4,4,4,4,]),'and':([0,12,13,14,17,19,22,23,31,],[10,10,10,10,10,10,10,10,10,]),'expression':([0,12,13,14,17,19,22,23,31,],[11,11,11,11,11,11,11,11,11,]),'next':([1,],[18,]),'formula':([0,12,13,14,17,19,22,23,31,],[9,24,25,26,27,28,29,30,32,]),'until':([1,],[15,]),'temporal_operator':([1,],[21,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,18 +27,24 @@ del _lr_goto_items
 _lr_productions = [
   ("S' -> formula","S'",1,None,None,None),
   ('formula -> AP','formula',1,'p_formula_ap','parser.py',20),
-  ('formula -> ex','formula',1,'p_formula_ex','parser.py',26),
-  ('formula -> eg','formula',1,'p_formula_eg','parser.py',31),
-  ('formula -> eu','formula',1,'p_formula_eu','parser.py',36),
-  ('formula -> TRUE','formula',1,'p_formula_true','parser.py',41),
-  ('formula -> FALSE','formula',1,'p_formula_false','parser.py',46),
-  ('formula -> not','formula',1,'p_formula_not','parser.py',51),
-  ('formula -> or','formula',1,'p_formula_or','parser.py',56),
-  ('formula -> and','formula',1,'p_formula_and','parser.py',61),
-  ('ex -> EX formula','ex',2,'p_ex','parser.py',68),
-  ('eg -> EG formula','eg',2,'p_eg','parser.py',73),
-  ('eu -> EU L_BRACKET formula UNTIL formula R_BRACKET','eu',6,'p_eu','parser.py',78),
-  ('not -> EXCLAMATION formula','not',2,'p_not','parser.py',84),
-  ('and -> formula AND formula','and',3,'p_and','parser.py',89),
-  ('or -> formula OR formula','or',3,'p_or','parser.py',94),
+  ('formula -> expression','formula',1,'p_formula_expression','parser.py',25),
+  ('formula -> TRUE','formula',1,'p_formula_true','parser.py',30),
+  ('formula -> FALSE','formula',1,'p_formula_false','parser.py',35),
+  ('formula -> not','formula',1,'p_formula_not','parser.py',40),
+  ('formula -> or','formula',1,'p_formula_or','parser.py',45),
+  ('formula -> and','formula',1,'p_formula_and','parser.py',50),
+  ('expression -> path_quantifier temporal_operator','expression',2,'p_expression','parser.py',57),
+  ('path_quantifier -> ALWAYS','path_quantifier',1,'p_path_quantifier','parser.py',97),
+  ('path_quantifier -> EXISTS','path_quantifier',1,'p_path_quantifier','parser.py',98),
+  ('temporal_operator -> next','temporal_operator',1,'p_temporal_operator','parser.py',103),
+  ('temporal_operator -> globally','temporal_operator',1,'p_temporal_operator','parser.py',104),
+  ('temporal_operator -> finally','temporal_operator',1,'p_temporal_operator','parser.py',105),
+  ('temporal_operator -> until','temporal_operator',1,'p_temporal_operator','parser.py',106),
+  ('next -> NEXT formula','next',2,'p_next','parser.py',111),
+  ('globally -> GLOBALLY formula','globally',2,'p_globally','parser.py',116),
+  ('finally -> FINALLY formula','finally',2,'p_finally','parser.py',121),
+  ('until -> L_BRACKET formula UNTIL formula R_BRACKET','until',5,'p_until','parser.py',126),
+  ('not -> EXCLAMATION formula','not',2,'p_not','parser.py',132),
+  ('and -> formula AND formula','and',3,'p_and','parser.py',137),
+  ('or -> formula OR formula','or',3,'p_or','parser.py',142),
 ]

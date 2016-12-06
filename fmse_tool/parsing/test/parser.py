@@ -86,5 +86,21 @@ class ParserTest(unittest.TestCase):
 
         self.assertEqual(result, expected_result)
 
+    def test_transformation(self):
+        formula = "AX 'q' or 'p'"
+        result = parser.parse(formula)
+        expected_result = NotNode(
+            ExistsNextNode(
+                NotNode(
+                    OrNode(
+                        AtomicPropositionNode('q'),
+                        AtomicPropositionNode('p')
+                    )
+                )
+            )
+        )
+
+        self.assertEqual(result, expected_result)
+
 if __name__ == '__main__':
     unittest.main()

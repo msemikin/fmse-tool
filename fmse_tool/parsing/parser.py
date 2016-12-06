@@ -55,30 +55,77 @@ def p_formula_and(p):
 
 def p_expression(p):
     """expression : path_quantifier temporal_operator"""
-    p[0] = ExistsNextNode(p[2])
+    (operator_name, value) = p[2]
+    expression_name = p[1] + operator_name
+    ExistsFinallyNode = lambda val: ExistsUntilNode(TrueNode(), val)
+
+    if expression_name == 'EU':
+        (condition, until_condition) = value
+        p[0] = ExistsUntilNode(condition, until_condition)
+    elif expression_name == 'AU':
+        (condition, until_condition) = value
+        p[0] = AndNode(
+            NotNode(
+                ExistsUntilNode(
+                    NotNode(until_condition),
+                    AndNode(NotNode(condition), NotNode(until_condition))
+                )
+            ),
+            NotNode(
+                ExistsGloballyNode(
+                    NotNode(until_condition)
+                )
+            )
+        )
+    elif expression_name == 'EG':
+        p[0] = ExistsGloballyNode(value)
+    elif expression_name == 'AG':
+        p[0] = NotNode(ExistsFinallyNode(NotNode(value)))
+
+    elif expression_name == 'EX':
+        p[0] = ExistsNextNode(value)
+    elif expression_name == 'AX':
+        p[0] = NotNode(ExistsNextNode(NotNode(value)))
+
+    elif expression_name == 'EF':
+        p[0] = ExistsFinallyNode(value)
+    elif expression_name == 'AF':
+        p[0] = NotNode(ExistsGloballyNode(NotNode(value)))
 
 
 def p_path_quantifier(p):
-    """path_quantifier : ALWAYS | EXISTS"""
+    """path_quantifier : ALWAYS
+                       | EXISTS"""
+    p[0] = p[1]
 
 
 def p_temporal_operator(p):
-    """temporal_operator : NEXT | GLOBALLY | FINALLY | until"""
+    """temporal_operator : next
+                         | globally
+                         | finally
+                         | until"""
+    p[0] = p[1]
+
+
+def p_next(p):
+    """next : NEXT formula"""
+    p[0] = ('X', p[2])
+
+
+def p_globally(p):
+    """globally : GLOBALLY formula"""
+    p[0] = ('G', p[2])
+
+
+def p_finally(p):
+    """finally : FINALLY formula"""
+    p[0] = ('F', p[2])
 
 
 def p_until(p):
     """until : L_BRACKET formula UNTIL formula R_BRACKET"""
-
-
-def p_eg(p):
-    """eg : EG formula"""
-    p[0] = ExistsGloballyNode(p[2])
-
-
-def p_eu(p):
-    """eu : EU """
-    (_, _, _, condition, _, until_condition, _) = p
-    p[0] = ExistsUntilNode(condition, until_condition)
+    (_, _, condition, _, until_condition, _) = p
+    p[0] = ('U', (condition, until_condition))
 
 
 def p_not(p):

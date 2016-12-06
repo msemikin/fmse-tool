@@ -15,7 +15,7 @@ from docopt import docopt
 
 from fmse_tool.cli.diagram_generator import generate_diagram, generate_extended_diagram
 from fmse_tool.cli.input_parser import parse_lts, parse_ctl_lts
-from fmse_tool.parsing.AST.AtomicPropositionNode import AtomicPropositionNode
+from fmse_tool.parsing import parser
 
 
 def main():
@@ -37,83 +37,17 @@ def main():
         composed = light.compose(switch)
         generate_extended_diagram(composed, 'result')
 
+        tests = [
+            "EF 'lightOn'",
+            "EG !'highBatteryUse'",
+            "AG EF !'lightOn'",
+            "AG AF 'highBatteryUse'",
+            "AG 'highBatteryUse'"
+        ]
 
-        EF_lightOn = ExistsUntilNode(
-            composed,
-            TrueNode(),
-            AtomicPropositionNode(composed, 'lightOn')
-        )
-        print('EF lightOn: ', EF_lightOn.evaluate(composed.get_states()))
-
-        EG_Not_highBatteryUse = ExistsGloballyNode(
-            composed,
-            NotNode(
-                composed,
-                AtomicPropositionNode(composed, 'highBatteryUse')
-            )
-        )
-        print('EG not highBatteryUse: ', EG_Not_highBatteryUse.evaluate(composed.get_states()))
-
-        AG_EF_NOT_lightOn = NotNode(
-            composed,
-            ExistsUntilNode(
-                composed,
-                TrueNode(),
-                NotNode(
-                    composed,
-                    ExistsUntilNode(
-                        composed,
-                        TrueNode(),
-                        NotNode(
-                            composed,
-                            AtomicPropositionNode(
-                                composed,
-                                'lightOn'
-                            )
-                        )
-                    )
-                )
-            )
-        )
-        print('AG EF not lightOn: ', AG_EF_NOT_lightOn.evaluate(composed.get_states()))
-
-        AG_AF_highBatteryUse = NotNode(
-            composed,
-            ExistsUntilNode(
-                composed,
-                TrueNode(),
-                NotNode(
-                    composed,
-                    ExistsGloballyNode(
-                        composed,
-                        NotNode(
-                            composed,
-                            AtomicPropositionNode(
-                                composed,
-                                'highBatteryUse'
-                            )
-                        )
-                    )
-                )
-            )
-        )
-        print('AG AF highBatteryUse: ', AG_AF_highBatteryUse.evaluate(composed.get_states()))
-
-        AG_highBatteryUse = NotNode(
-            composed,
-            ExistsUntilNode(
-                composed,
-                TrueNode(),
-                NotNode(
-                    composed,
-                    AtomicPropositionNode(
-                        composed,
-                        'highBatteryUse'
-                    )
-                )
-            )
-        )
-        print('AG highBatteryUse: ', AG_highBatteryUse.evaluate(composed.get_states()))
+        for test in tests:
+            result = parser.parse(test).evaluate(composed, composed.get_states())
+            print(test + ": " + str(result))
 
 
 
