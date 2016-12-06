@@ -1,6 +1,6 @@
 import unittest
 
-from model.LTS import LTS
+from fmse_tool.model.LTS import LTS
 
 from fmse_tool.model.Transition import Transition
 

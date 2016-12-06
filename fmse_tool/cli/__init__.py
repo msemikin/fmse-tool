@@ -11,15 +11,11 @@ Options:
   --version     Show version.
 
 """
-from fmse_tool.cli.diagram_generator import generate_diagram
 from docopt import docopt
 
+from fmse_tool.cli.diagram_generator import generate_diagram, generate_extended_diagram
 from fmse_tool.cli.input_parser import parse_lts, parse_ctl_lts
-from fmse_tool.AST.NotNode import NotNode
-from fmse_tool.AST.TrueNode import TrueNode
-from fmse_tool.AST.ExistsUntilNode import ExistsUntilNode
-from fmse_tool.AST.ExistsGloballyNode import ExistsGloballyNode
-from fmse_tool.AST.AtomicPropositionNode import AtomicPropositionNode
+from fmse_tool.parsing.AST.AtomicPropositionNode import AtomicPropositionNode
 
 
 def main():
@@ -34,10 +30,13 @@ def main():
         generate_diagram(second_lts, second_filename)
         composed_lts = first_lts.compose(second_lts)
         generate_diagram(composed_lts, 'result')
+
     if arguments['check']:
         light = parse_ctl_lts('./input/CTLLTS/light.txt')
         switch = parse_ctl_lts('./input/CTLLTS/switch.txt')
         composed = light.compose(switch)
+        generate_extended_diagram(composed, 'result')
+
 
         EF_lightOn = ExistsUntilNode(
             composed,

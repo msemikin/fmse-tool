@@ -1,0 +1,580 @@
+Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> formula
+Rule 1     formula -> AP
+Rule 2     formula -> ex
+Rule 3     formula -> eg
+Rule 4     formula -> eu
+Rule 5     formula -> TRUE
+Rule 6     formula -> FALSE
+Rule 7     formula -> not
+Rule 8     formula -> or
+Rule 9     formula -> and
+Rule 10    ex -> EX formula
+Rule 11    eg -> EG formula
+Rule 12    eu -> EU L_BRACKET formula UNTIL formula R_BRACKET
+Rule 13    not -> EXCLAMATION formula
+Rule 14    and -> formula AND formula
+Rule 15    or -> formula OR formula
+
+Terminals, with rules where they appear
+
+AND                  : 14
+AP                   : 1
+EG                   : 11
+EU                   : 12
+EX                   : 10
+EXCLAMATION          : 13
+FALSE                : 6
+L_BRACKET            : 12
+OR                   : 15
+R_BRACKET            : 12
+TRUE                 : 5
+UNTIL                : 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+and                  : 9
+eg                   : 3
+eu                   : 4
+ex                   : 2
+formula              : 10 11 12 12 13 14 14 15 15 0
+not                  : 7
+or                   : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . formula
+    (1) formula -> . AP
+    (2) formula -> . ex
+    (3) formula -> . eg
+    (4) formula -> . eu
+    (5) formula -> . TRUE
+    (6) formula -> . FALSE
+    (7) formula -> . not
+    (8) formula -> . or
+    (9) formula -> . and
+    (10) ex -> . EX formula
+    (11) eg -> . EG formula
+    (12) eu -> . EU L_BRACKET formula UNTIL formula R_BRACKET
+    (13) not -> . EXCLAMATION formula
+    (15) or -> . formula OR formula
+    (14) and -> . formula AND formula
+
+    AP              shift and go to state 10
+    TRUE            shift and go to state 6
+    FALSE           shift and go to state 14
+    EX              shift and go to state 13
+    EG              shift and go to state 3
+    EU              shift and go to state 8
+    EXCLAMATION     shift and go to state 9
+
+    not                            shift and go to state 7
+    and                            shift and go to state 1
+    eu                             shift and go to state 2
+    or                             shift and go to state 11
+    ex                             shift and go to state 12
+    formula                        shift and go to state 4
+    eg                             shift and go to state 5
+
+state 1
+
+    (9) formula -> and .
+
+    OR              reduce using rule 9 (formula -> and .)
+    AND             reduce using rule 9 (formula -> and .)
+    $end            reduce using rule 9 (formula -> and .)
+    UNTIL           reduce using rule 9 (formula -> and .)
+    R_BRACKET       reduce using rule 9 (formula -> and .)
+
+
+state 2
+
+    (4) formula -> eu .
+
+    OR              reduce using rule 4 (formula -> eu .)
+    AND             reduce using rule 4 (formula -> eu .)
+    $end            reduce using rule 4 (formula -> eu .)
+    UNTIL           reduce using rule 4 (formula -> eu .)
+    R_BRACKET       reduce using rule 4 (formula -> eu .)
+
+
+state 3
+
+    (11) eg -> EG . formula
+    (1) formula -> . AP
+    (2) formula -> . ex
+    (3) formula -> . eg
+    (4) formula -> . eu
+    (5) formula -> . TRUE
+    (6) formula -> . FALSE
+    (7) formula -> . not
+    (8) formula -> . or
+    (9) formula -> . and
+    (10) ex -> . EX formula
+    (11) eg -> . EG formula
+    (12) eu -> . EU L_BRACKET formula UNTIL formula R_BRACKET
+    (13) not -> . EXCLAMATION formula
+    (15) or -> . formula OR formula
+    (14) and -> . formula AND formula
+
+    AP              shift and go to state 10
+    TRUE            shift and go to state 6
+    FALSE           shift and go to state 14
+    EX              shift and go to state 13
+    EG              shift and go to state 3
+    EU              shift and go to state 8
+    EXCLAMATION     shift and go to state 9
+
+    not                            shift and go to state 7
+    and                            shift and go to state 1
+    eu                             shift and go to state 2
+    or                             shift and go to state 11
+    ex                             shift and go to state 12
+    formula                        shift and go to state 15
+    eg                             shift and go to state 5
+
+state 4
+
+    (0) S' -> formula .
+    (15) or -> formula . OR formula
+    (14) and -> formula . AND formula
+
+    OR              shift and go to state 16
+    AND             shift and go to state 17
+
+
+state 5
+
+    (3) formula -> eg .
+
+    OR              reduce using rule 3 (formula -> eg .)
+    AND             reduce using rule 3 (formula -> eg .)
+    $end            reduce using rule 3 (formula -> eg .)
+    UNTIL           reduce using rule 3 (formula -> eg .)
+    R_BRACKET       reduce using rule 3 (formula -> eg .)
+
+
+state 6
+
+    (5) formula -> TRUE .
+
+    OR              reduce using rule 5 (formula -> TRUE .)
+    AND             reduce using rule 5 (formula -> TRUE .)
+    $end            reduce using rule 5 (formula -> TRUE .)
+    UNTIL           reduce using rule 5 (formula -> TRUE .)
+    R_BRACKET       reduce using rule 5 (formula -> TRUE .)
+
+
+state 7
+
+    (7) formula -> not .
+
+    OR              reduce using rule 7 (formula -> not .)
+    AND             reduce using rule 7 (formula -> not .)
+    $end            reduce using rule 7 (formula -> not .)
+    UNTIL           reduce using rule 7 (formula -> not .)
+    R_BRACKET       reduce using rule 7 (formula -> not .)
+
+
+state 8
+
+    (12) eu -> EU . L_BRACKET formula UNTIL formula R_BRACKET
+
+    L_BRACKET       shift and go to state 18
+
+
+state 9
+
+    (13) not -> EXCLAMATION . formula
+    (1) formula -> . AP
+    (2) formula -> . ex
+    (3) formula -> . eg
+    (4) formula -> . eu
+    (5) formula -> . TRUE
+    (6) formula -> . FALSE
+    (7) formula -> . not
+    (8) formula -> . or
+    (9) formula -> . and
+    (10) ex -> . EX formula
+    (11) eg -> . EG formula
+    (12) eu -> . EU L_BRACKET formula UNTIL formula R_BRACKET
+    (13) not -> . EXCLAMATION formula
+    (15) or -> . formula OR formula
+    (14) and -> . formula AND formula
+
+    AP              shift and go to state 10
+    TRUE            shift and go to state 6
+    FALSE           shift and go to state 14
+    EX              shift and go to state 13
+    EG              shift and go to state 3
+    EU              shift and go to state 8
+    EXCLAMATION     shift and go to state 9
+
+    not                            shift and go to state 7
+    and                            shift and go to state 1
+    eu                             shift and go to state 2
+    or                             shift and go to state 11
+    ex                             shift and go to state 12
+    formula                        shift and go to state 19
+    eg                             shift and go to state 5
+
+state 10
+
+    (1) formula -> AP .
+
+    OR              reduce using rule 1 (formula -> AP .)
+    AND             reduce using rule 1 (formula -> AP .)
+    $end            reduce using rule 1 (formula -> AP .)
+    UNTIL           reduce using rule 1 (formula -> AP .)
+    R_BRACKET       reduce using rule 1 (formula -> AP .)
+
+
+state 11
+
+    (8) formula -> or .
+
+    OR              reduce using rule 8 (formula -> or .)
+    AND             reduce using rule 8 (formula -> or .)
+    $end            reduce using rule 8 (formula -> or .)
+    UNTIL           reduce using rule 8 (formula -> or .)
+    R_BRACKET       reduce using rule 8 (formula -> or .)
+
+
+state 12
+
+    (2) formula -> ex .
+
+    OR              reduce using rule 2 (formula -> ex .)
+    AND             reduce using rule 2 (formula -> ex .)
+    $end            reduce using rule 2 (formula -> ex .)
+    UNTIL           reduce using rule 2 (formula -> ex .)
+    R_BRACKET       reduce using rule 2 (formula -> ex .)
+
+
+state 13
+
+    (10) ex -> EX . formula
+    (1) formula -> . AP
+    (2) formula -> . ex
+    (3) formula -> . eg
+    (4) formula -> . eu
+    (5) formula -> . TRUE
+    (6) formula -> . FALSE
+    (7) formula -> . not
+    (8) formula -> . or
+    (9) formula -> . and
+    (10) ex -> . EX formula
+    (11) eg -> . EG formula
+    (12) eu -> . EU L_BRACKET formula UNTIL formula R_BRACKET
+    (13) not -> . EXCLAMATION formula
+    (15) or -> . formula OR formula
+    (14) and -> . formula AND formula
+
+    AP              shift and go to state 10
+    TRUE            shift and go to state 6
+    FALSE           shift and go to state 14
+    EX              shift and go to state 13
+    EG              shift and go to state 3
+    EU              shift and go to state 8
+    EXCLAMATION     shift and go to state 9
+
+    not                            shift and go to state 7
+    and                            shift and go to state 1
+    eu                             shift and go to state 2
+    or                             shift and go to state 11
+    ex                             shift and go to state 12
+    formula                        shift and go to state 20
+    eg                             shift and go to state 5
+
+state 14
+
+    (6) formula -> FALSE .
+
+    OR              reduce using rule 6 (formula -> FALSE .)
+    AND             reduce using rule 6 (formula -> FALSE .)
+    $end            reduce using rule 6 (formula -> FALSE .)
+    UNTIL           reduce using rule 6 (formula -> FALSE .)
+    R_BRACKET       reduce using rule 6 (formula -> FALSE .)
+
+
+state 15
+
+    (11) eg -> EG formula .
+    (15) or -> formula . OR formula
+    (14) and -> formula . AND formula
+
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+    $end            reduce using rule 11 (eg -> EG formula .)
+    UNTIL           reduce using rule 11 (eg -> EG formula .)
+    R_BRACKET       reduce using rule 11 (eg -> EG formula .)
+    OR              shift and go to state 16
+    AND             shift and go to state 17
+
+  ! OR              [ reduce using rule 11 (eg -> EG formula .) ]
+  ! AND             [ reduce using rule 11 (eg -> EG formula .) ]
+
+
+state 16
+
+    (15) or -> formula OR . formula
+    (1) formula -> . AP
+    (2) formula -> . ex
+    (3) formula -> . eg
+    (4) formula -> . eu
+    (5) formula -> . TRUE
+    (6) formula -> . FALSE
+    (7) formula -> . not
+    (8) formula -> . or
+    (9) formula -> . and
+    (10) ex -> . EX formula
+    (11) eg -> . EG formula
+    (12) eu -> . EU L_BRACKET formula UNTIL formula R_BRACKET
+    (13) not -> . EXCLAMATION formula
+    (15) or -> . formula OR formula
+    (14) and -> . formula AND formula
+
+    AP              shift and go to state 10
+    TRUE            shift and go to state 6
+    FALSE           shift and go to state 14
+    EX              shift and go to state 13
+    EG              shift and go to state 3
+    EU              shift and go to state 8
+    EXCLAMATION     shift and go to state 9
+
+    not                            shift and go to state 7
+    and                            shift and go to state 1
+    eu                             shift and go to state 2
+    or                             shift and go to state 11
+    ex                             shift and go to state 12
+    formula                        shift and go to state 21
+    eg                             shift and go to state 5
+
+state 17
+
+    (14) and -> formula AND . formula
+    (1) formula -> . AP
+    (2) formula -> . ex
+    (3) formula -> . eg
+    (4) formula -> . eu
+    (5) formula -> . TRUE
+    (6) formula -> . FALSE
+    (7) formula -> . not
+    (8) formula -> . or
+    (9) formula -> . and
+    (10) ex -> . EX formula
+    (11) eg -> . EG formula
+    (12) eu -> . EU L_BRACKET formula UNTIL formula R_BRACKET
+    (13) not -> . EXCLAMATION formula
+    (15) or -> . formula OR formula
+    (14) and -> . formula AND formula
+
+    AP              shift and go to state 10
+    TRUE            shift and go to state 6
+    FALSE           shift and go to state 14
+    EX              shift and go to state 13
+    EG              shift and go to state 3
+    EU              shift and go to state 8
+    EXCLAMATION     shift and go to state 9
+
+    not                            shift and go to state 7
+    and                            shift and go to state 1
+    eu                             shift and go to state 2
+    or                             shift and go to state 11
+    ex                             shift and go to state 12
+    formula                        shift and go to state 22
+    eg                             shift and go to state 5
+
+state 18
+
+    (12) eu -> EU L_BRACKET . formula UNTIL formula R_BRACKET
+    (1) formula -> . AP
+    (2) formula -> . ex
+    (3) formula -> . eg
+    (4) formula -> . eu
+    (5) formula -> . TRUE
+    (6) formula -> . FALSE
+    (7) formula -> . not
+    (8) formula -> . or
+    (9) formula -> . and
+    (10) ex -> . EX formula
+    (11) eg -> . EG formula
+    (12) eu -> . EU L_BRACKET formula UNTIL formula R_BRACKET
+    (13) not -> . EXCLAMATION formula
+    (15) or -> . formula OR formula
+    (14) and -> . formula AND formula
+
+    AP              shift and go to state 10
+    TRUE            shift and go to state 6
+    FALSE           shift and go to state 14
+    EX              shift and go to state 13
+    EG              shift and go to state 3
+    EU              shift and go to state 8
+    EXCLAMATION     shift and go to state 9
+
+    not                            shift and go to state 7
+    and                            shift and go to state 1
+    eu                             shift and go to state 2
+    or                             shift and go to state 11
+    ex                             shift and go to state 12
+    formula                        shift and go to state 23
+    eg                             shift and go to state 5
+
+state 19
+
+    (13) not -> EXCLAMATION formula .
+    (15) or -> formula . OR formula
+    (14) and -> formula . AND formula
+
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+    $end            reduce using rule 13 (not -> EXCLAMATION formula .)
+    UNTIL           reduce using rule 13 (not -> EXCLAMATION formula .)
+    R_BRACKET       reduce using rule 13 (not -> EXCLAMATION formula .)
+    OR              shift and go to state 16
+    AND             shift and go to state 17
+
+  ! OR              [ reduce using rule 13 (not -> EXCLAMATION formula .) ]
+  ! AND             [ reduce using rule 13 (not -> EXCLAMATION formula .) ]
+
+
+state 20
+
+    (10) ex -> EX formula .
+    (15) or -> formula . OR formula
+    (14) and -> formula . AND formula
+
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+    $end            reduce using rule 10 (ex -> EX formula .)
+    UNTIL           reduce using rule 10 (ex -> EX formula .)
+    R_BRACKET       reduce using rule 10 (ex -> EX formula .)
+    OR              shift and go to state 16
+    AND             shift and go to state 17
+
+  ! OR              [ reduce using rule 10 (ex -> EX formula .) ]
+  ! AND             [ reduce using rule 10 (ex -> EX formula .) ]
+
+
+state 21
+
+    (15) or -> formula OR formula .
+    (15) or -> formula . OR formula
+    (14) and -> formula . AND formula
+
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+    $end            reduce using rule 15 (or -> formula OR formula .)
+    UNTIL           reduce using rule 15 (or -> formula OR formula .)
+    R_BRACKET       reduce using rule 15 (or -> formula OR formula .)
+    OR              shift and go to state 16
+    AND             shift and go to state 17
+
+  ! OR              [ reduce using rule 15 (or -> formula OR formula .) ]
+  ! AND             [ reduce using rule 15 (or -> formula OR formula .) ]
+
+
+state 22
+
+    (14) and -> formula AND formula .
+    (15) or -> formula . OR formula
+    (14) and -> formula . AND formula
+
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+    $end            reduce using rule 14 (and -> formula AND formula .)
+    UNTIL           reduce using rule 14 (and -> formula AND formula .)
+    R_BRACKET       reduce using rule 14 (and -> formula AND formula .)
+    OR              shift and go to state 16
+    AND             shift and go to state 17
+
+  ! OR              [ reduce using rule 14 (and -> formula AND formula .) ]
+  ! AND             [ reduce using rule 14 (and -> formula AND formula .) ]
+
+
+state 23
+
+    (12) eu -> EU L_BRACKET formula . UNTIL formula R_BRACKET
+    (15) or -> formula . OR formula
+    (14) and -> formula . AND formula
+
+    UNTIL           shift and go to state 24
+    OR              shift and go to state 16
+    AND             shift and go to state 17
+
+
+state 24
+
+    (12) eu -> EU L_BRACKET formula UNTIL . formula R_BRACKET
+    (1) formula -> . AP
+    (2) formula -> . ex
+    (3) formula -> . eg
+    (4) formula -> . eu
+    (5) formula -> . TRUE
+    (6) formula -> . FALSE
+    (7) formula -> . not
+    (8) formula -> . or
+    (9) formula -> . and
+    (10) ex -> . EX formula
+    (11) eg -> . EG formula
+    (12) eu -> . EU L_BRACKET formula UNTIL formula R_BRACKET
+    (13) not -> . EXCLAMATION formula
+    (15) or -> . formula OR formula
+    (14) and -> . formula AND formula
+
+    AP              shift and go to state 10
+    TRUE            shift and go to state 6
+    FALSE           shift and go to state 14
+    EX              shift and go to state 13
+    EG              shift and go to state 3
+    EU              shift and go to state 8
+    EXCLAMATION     shift and go to state 9
+
+    not                            shift and go to state 7
+    and                            shift and go to state 1
+    eu                             shift and go to state 2
+    or                             shift and go to state 11
+    ex                             shift and go to state 12
+    formula                        shift and go to state 25
+    eg                             shift and go to state 5
+
+state 25
+
+    (12) eu -> EU L_BRACKET formula UNTIL formula . R_BRACKET
+    (15) or -> formula . OR formula
+    (14) and -> formula . AND formula
+
+    R_BRACKET       shift and go to state 26
+    OR              shift and go to state 16
+    AND             shift and go to state 17
+
+
+state 26
+
+    (12) eu -> EU L_BRACKET formula UNTIL formula R_BRACKET .
+
+    OR              reduce using rule 12 (eu -> EU L_BRACKET formula UNTIL formula R_BRACKET .)
+    AND             reduce using rule 12 (eu -> EU L_BRACKET formula UNTIL formula R_BRACKET .)
+    $end            reduce using rule 12 (eu -> EU L_BRACKET formula UNTIL formula R_BRACKET .)
+    UNTIL           reduce using rule 12 (eu -> EU L_BRACKET formula UNTIL formula R_BRACKET .)
+    R_BRACKET       reduce using rule 12 (eu -> EU L_BRACKET formula UNTIL formula R_BRACKET .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for OR in state 15 resolved as shift
+WARNING: shift/reduce conflict for AND in state 15 resolved as shift
+WARNING: shift/reduce conflict for OR in state 19 resolved as shift
+WARNING: shift/reduce conflict for AND in state 19 resolved as shift
+WARNING: shift/reduce conflict for OR in state 20 resolved as shift
+WARNING: shift/reduce conflict for AND in state 20 resolved as shift
+WARNING: shift/reduce conflict for OR in state 21 resolved as shift
+WARNING: shift/reduce conflict for AND in state 21 resolved as shift
+WARNING: shift/reduce conflict for OR in state 22 resolved as shift
+WARNING: shift/reduce conflict for AND in state 22 resolved as shift

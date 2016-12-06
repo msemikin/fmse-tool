@@ -10,6 +10,7 @@ setup(name='fmse_tool',
       },
       install_requires=[
           'docopt',
-          'graphviz'
+          'graphviz',
+          'ply'
       ]
       )

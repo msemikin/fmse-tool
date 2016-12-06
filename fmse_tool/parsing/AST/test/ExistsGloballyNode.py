@@ -1,10 +1,10 @@
 import unittest
 
-from fmse_tool.AST.ExistsGloballyNode import ExistsGloballyNode
-from fmse_tool.AST.TrueNode import TrueNode
-from fmse_tool.model.LTS import LTS
+from fmse_tool.parsing.AST.ExistsGloballyNode import ExistsGloballyNode, find_strongly_connected_components
 
+from fmse_tool.model.LTS import LTS
 from fmse_tool.model.Transition import Transition
+from fmse_tool.parsing.AST.TrueNode import TrueNode
 
 
 class ASTTest(unittest.TestCase):
@@ -24,12 +24,11 @@ class ASTTest(unittest.TestCase):
             Transition(('j', ), '', ('g', )),
             Transition(('j', ), '', ('k', )),
         ], ('a', ))
-        node = ExistsGloballyNode(lts, None)
         self.assertEqual(
             {
                 frozenset(component)
                 for component in
-                node.find_strongly_connected_components([
+                find_strongly_connected_components(lts, [
                     ('a', ), ('b', ), ('c', ), ('d', ),
                     ('e', ), ('f', ), ('g', ), ('h', ),
                     ('i', ), ('j', ), ('k', )
@@ -55,9 +54,9 @@ class ASTTest(unittest.TestCase):
             Transition(('4', ), '', ('2', )),
             Transition(('4', ), '', ('5', )),
         ], ('0', ))
-        node = ExistsGloballyNode(lts, TrueNode())
+        node = ExistsGloballyNode(TrueNode())
         self.assertEqual(
-            node.evaluate({
+            node.evaluate(lts, {
                 ('0', ), ('1', ), ('2', ), ('3', ),
                 ('4', ), ('5', )
             }),
