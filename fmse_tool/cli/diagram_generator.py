@@ -10,7 +10,7 @@ def generate_diagram(lts, filename):
     dot.render(filename, directory='result')
 
 
-def generate_extended_diagram(lts, valid_states, filename):
+def generate_extended_diagram(lts, valid_states, filename=None):
     dot = Digraph()
     for state in set(lts.get_states()):
         dot.node(
@@ -25,4 +25,7 @@ def generate_extended_diagram(lts, valid_states, filename):
         )
     for from_state, token, to_state in lts.transitions:
         dot.edge(', '.join(from_state), ', '.join(to_state), label=token)
-    dot.render(filename, directory='result')
+    if filename is not None:
+        dot.render(filename, directory='result')
+    else:
+        return dot.source

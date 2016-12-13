@@ -1,6 +1,8 @@
 from itertools import chain
 from string import Template
 
+from collections import defaultdict
+
 from fmse_tool.model.LTS import LTS
 
 
@@ -15,10 +17,10 @@ class CTLLTS(LTS):
     def compose(self, second_lts):
         composed = super(CTLLTS, self).compose(second_lts)
         original_labellings = [self.labellings, second_lts.labellings]
-        labellings = {
+        labellings = defaultdict(set, {
             state: self.get_result_labelling(original_labellings, state)
             for state in composed.get_states()
-        }
+        })
         return CTLLTS(
             composed.transitions,
             composed.initial_state,

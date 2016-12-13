@@ -1,13 +1,8 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='fmse_tool',
       version='2.0.0',
-      packages=['fmse_tool'],
-      entry_points={
-          'console_scripts': [
-              'fmse_tool = fmse_tool.__main__:main'
-          ]
-      },
+      packages=find_packages(),
       install_requires=[
           'docopt',
           'graphviz',

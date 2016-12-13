@@ -14,7 +14,7 @@ Options:
 from docopt import docopt
 
 from fmse_tool.cli.diagram_generator import generate_diagram, generate_extended_diagram
-from fmse_tool.cli.input_parser import parse_lts, parse_ctl_lts
+from fmse_tool.cli.input_parser import parse_lts, parse_ctl_lts_from_file
 from fmse_tool.parsing import parser
 
 
@@ -32,8 +32,8 @@ def main():
         generate_diagram(composed_lts, 'result')
 
     if arguments['check']:
-        light = parse_ctl_lts('./input/CTLLTS/light.txt')
-        switch = parse_ctl_lts('./input/CTLLTS/switch.txt')
+        light = parse_ctl_lts_from_file('./input/CTLLTS/light.txt')
+        switch = parse_ctl_lts_from_file('./input/CTLLTS/switch.txt')
         composed = light.compose(switch)
         generate_extended_diagram(composed, set(), 'result')
 

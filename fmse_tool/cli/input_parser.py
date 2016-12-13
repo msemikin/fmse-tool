@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from fmse_tool.model.LTS import LTS
 from fmse_tool.model.Transition import Transition
 from fmse_tool.model.CTLLTS import CTLLTS
@@ -15,8 +17,8 @@ def parse_lts(filename):
     return LTS(transitions, initial_state)
 
 
-def parse_ctl_lts(filename):
-    file = [line for line in open(filename, 'r').read().split('\n')]
+def parse_ctl_lts(source):
+    file = [line for line in source.split('\n')]
     initial_state = (file[0],)
     delimiter = file.index('')
     raw_transitions = file[1:delimiter]
@@ -29,8 +31,12 @@ def parse_ctl_lts(filename):
         )
     ]
 
-    labellings = {}
+    labellings = defaultdict(set)
     for labelling in raw_labellings:
         (state, atomic_propositions) = labelling.split(': ')
         labellings[(state, )] = atomic_propositions.split(', ')
     return CTLLTS(transitions, initial_state, labellings)
+
+
+def parse_ctl_lts_from_file(filename):
+    return parse_ctl_lts(open(filename, 'r').read())
