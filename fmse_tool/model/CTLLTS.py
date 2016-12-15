@@ -20,7 +20,7 @@ class CTLLTS(LTS):
         labellings = defaultdict(set, {
             state: self.get_result_labelling(original_labellings, state)
             for state in composed.get_states()
-        })
+            })
         return CTLLTS(
             composed.transitions,
             composed.initial_state,
@@ -36,6 +36,17 @@ class CTLLTS(LTS):
             if (atom,) in labelling
         ))
 
+    def __eq__(self, other):
+        def freeze_labellings(labellings):
+            return {(state, frozenset(labels)) for (state, labels) in labellings.items()}
+
+        if isinstance(other, self.__class__):
+            print(self.transitions)
+            return (self.initial_state == other.initial_state and
+                    set(self.transitions) == set(other.transitions) and
+                    freeze_labellings(self.labellings) == freeze_labellings(other.labellings))
+        return False
+
     def __str__(self):
         template = Template("""
             initial_state: $initial_state,
@@ -47,4 +58,3 @@ class CTLLTS(LTS):
             'transitions': self.transitions,
             'labellings': self.labellings,
         })
-

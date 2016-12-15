@@ -1,0 +1,283 @@
+Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> NAME atomic_propositions transitions SEMICOLON expression
+Rule 2     expression -> empty
+Rule 3     atomic_propositions -> L_CURLY atomic_proposition R_CURLY
+Rule 4     atomic_propositions -> empty
+Rule 5     atomic_proposition -> NAME
+Rule 6     atomic_proposition -> empty
+Rule 7     atomic_proposition -> NAME COMMA atomic_proposition
+Rule 8     transitions -> L_PAREN transition R_PAREN
+Rule 9     transitions -> empty
+Rule 10    transition -> NAME ARROW NAME
+Rule 11    transition -> empty
+Rule 12    transition -> NAME ARROW NAME COMMA transition
+Rule 13    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ARROW                : 10 12
+COMMA                : 7 12
+L_CURLY              : 3
+L_PAREN              : 8
+NAME                 : 1 5 7 10 10 12 12
+R_CURLY              : 3
+R_PAREN              : 8
+SEMICOLON            : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+atomic_proposition   : 3 7
+atomic_propositions  : 1
+empty                : 2 4 6 9 11
+expression           : 1 0
+transition           : 8 12
+transitions          : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . NAME atomic_propositions transitions SEMICOLON expression
+    (2) expression -> . empty
+    (13) empty -> .
+
+    NAME            shift and go to state 2
+    $end            reduce using rule 13 (empty -> .)
+
+    expression                     shift and go to state 1
+    empty                          shift and go to state 3
+
+state 1
+
+    (0) S' -> expression .
+
+
+
+state 2
+
+    (1) expression -> NAME . atomic_propositions transitions SEMICOLON expression
+    (3) atomic_propositions -> . L_CURLY atomic_proposition R_CURLY
+    (4) atomic_propositions -> . empty
+    (13) empty -> .
+
+    L_CURLY         shift and go to state 4
+    L_PAREN         reduce using rule 13 (empty -> .)
+    SEMICOLON       reduce using rule 13 (empty -> .)
+
+    empty                          shift and go to state 6
+    atomic_propositions            shift and go to state 5
+
+state 3
+
+    (2) expression -> empty .
+
+    $end            reduce using rule 2 (expression -> empty .)
+
+
+state 4
+
+    (3) atomic_propositions -> L_CURLY . atomic_proposition R_CURLY
+    (5) atomic_proposition -> . NAME
+    (6) atomic_proposition -> . empty
+    (7) atomic_proposition -> . NAME COMMA atomic_proposition
+    (13) empty -> .
+
+    NAME            shift and go to state 8
+    R_CURLY         reduce using rule 13 (empty -> .)
+
+    empty                          shift and go to state 9
+    atomic_proposition             shift and go to state 7
+
+state 5
+
+    (1) expression -> NAME atomic_propositions . transitions SEMICOLON expression
+    (8) transitions -> . L_PAREN transition R_PAREN
+    (9) transitions -> . empty
+    (13) empty -> .
+
+    L_PAREN         shift and go to state 12
+    SEMICOLON       reduce using rule 13 (empty -> .)
+
+    transitions                    shift and go to state 10
+    empty                          shift and go to state 11
+
+state 6
+
+    (4) atomic_propositions -> empty .
+
+    L_PAREN         reduce using rule 4 (atomic_propositions -> empty .)
+    SEMICOLON       reduce using rule 4 (atomic_propositions -> empty .)
+
+
+state 7
+
+    (3) atomic_propositions -> L_CURLY atomic_proposition . R_CURLY
+
+    R_CURLY         shift and go to state 13
+
+
+state 8
+
+    (5) atomic_proposition -> NAME .
+    (7) atomic_proposition -> NAME . COMMA atomic_proposition
+
+    R_CURLY         reduce using rule 5 (atomic_proposition -> NAME .)
+    COMMA           shift and go to state 14
+
+
+state 9
+
+    (6) atomic_proposition -> empty .
+
+    R_CURLY         reduce using rule 6 (atomic_proposition -> empty .)
+
+
+state 10
+
+    (1) expression -> NAME atomic_propositions transitions . SEMICOLON expression
+
+    SEMICOLON       shift and go to state 15
+
+
+state 11
+
+    (9) transitions -> empty .
+
+    SEMICOLON       reduce using rule 9 (transitions -> empty .)
+
+
+state 12
+
+    (8) transitions -> L_PAREN . transition R_PAREN
+    (10) transition -> . NAME ARROW NAME
+    (11) transition -> . empty
+    (12) transition -> . NAME ARROW NAME COMMA transition
+    (13) empty -> .
+
+    NAME            shift and go to state 18
+    R_PAREN         reduce using rule 13 (empty -> .)
+
+    empty                          shift and go to state 16
+    transition                     shift and go to state 17
+
+state 13
+
+    (3) atomic_propositions -> L_CURLY atomic_proposition R_CURLY .
+
+    L_PAREN         reduce using rule 3 (atomic_propositions -> L_CURLY atomic_proposition R_CURLY .)
+    SEMICOLON       reduce using rule 3 (atomic_propositions -> L_CURLY atomic_proposition R_CURLY .)
+
+
+state 14
+
+    (7) atomic_proposition -> NAME COMMA . atomic_proposition
+    (5) atomic_proposition -> . NAME
+    (6) atomic_proposition -> . empty
+    (7) atomic_proposition -> . NAME COMMA atomic_proposition
+    (13) empty -> .
+
+    NAME            shift and go to state 8
+    R_CURLY         reduce using rule 13 (empty -> .)
+
+    empty                          shift and go to state 9
+    atomic_proposition             shift and go to state 19
+
+state 15
+
+    (1) expression -> NAME atomic_propositions transitions SEMICOLON . expression
+    (1) expression -> . NAME atomic_propositions transitions SEMICOLON expression
+    (2) expression -> . empty
+    (13) empty -> .
+
+    NAME            shift and go to state 2
+    $end            reduce using rule 13 (empty -> .)
+
+    expression                     shift and go to state 20
+    empty                          shift and go to state 3
+
+state 16
+
+    (11) transition -> empty .
+
+    R_PAREN         reduce using rule 11 (transition -> empty .)
+
+
+state 17
+
+    (8) transitions -> L_PAREN transition . R_PAREN
+
+    R_PAREN         shift and go to state 21
+
+
+state 18
+
+    (10) transition -> NAME . ARROW NAME
+    (12) transition -> NAME . ARROW NAME COMMA transition
+
+    ARROW           shift and go to state 22
+
+
+state 19
+
+    (7) atomic_proposition -> NAME COMMA atomic_proposition .
+
+    R_CURLY         reduce using rule 7 (atomic_proposition -> NAME COMMA atomic_proposition .)
+
+
+state 20
+
+    (1) expression -> NAME atomic_propositions transitions SEMICOLON expression .
+
+    $end            reduce using rule 1 (expression -> NAME atomic_propositions transitions SEMICOLON expression .)
+
+
+state 21
+
+    (8) transitions -> L_PAREN transition R_PAREN .
+
+    SEMICOLON       reduce using rule 8 (transitions -> L_PAREN transition R_PAREN .)
+
+
+state 22
+
+    (10) transition -> NAME ARROW . NAME
+    (12) transition -> NAME ARROW . NAME COMMA transition
+
+    NAME            shift and go to state 23
+
+
+state 23
+
+    (10) transition -> NAME ARROW NAME .
+    (12) transition -> NAME ARROW NAME . COMMA transition
+
+    R_PAREN         reduce using rule 10 (transition -> NAME ARROW NAME .)
+    COMMA           shift and go to state 24
+
+
+state 24
+
+    (12) transition -> NAME ARROW NAME COMMA . transition
+    (10) transition -> . NAME ARROW NAME
+    (11) transition -> . empty
+    (12) transition -> . NAME ARROW NAME COMMA transition
+    (13) empty -> .
+
+    NAME            shift and go to state 18
+    R_PAREN         reduce using rule 13 (empty -> .)
+
+    empty                          shift and go to state 16
+    transition                     shift and go to state 25
+
+state 25
+
+    (12) transition -> NAME ARROW NAME COMMA transition .
+
+    R_PAREN         reduce using rule 12 (transition -> NAME ARROW NAME COMMA transition .)
+

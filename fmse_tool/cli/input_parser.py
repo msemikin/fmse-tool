@@ -28,6 +28,7 @@ def parse_ctl_lts(source):
         Transition((from_state,), token, (to_state,))
         for (from_state, token, to_state) in (
             line.split(' ') for line in raw_transitions
+            if line
         )
     ]
 
