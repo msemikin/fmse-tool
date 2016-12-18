@@ -11,7 +11,8 @@ from fmse_tool.parsing.AST.TrueNode import TrueNode
 from fmse_tool.parsing.AST.AtomicPropositionNode import AtomicPropositionNode
 
 # don't remove this line
-from fmse_tool.parsing.tokenizer import tokens
+from fmse_tool.parsing.exception import UnexpectedEndOfInputError, InputSyntaxError
+from fmse_tool.parsing.tokenizer import tokens, lexer
 
 # FORMULA
 
@@ -143,13 +144,16 @@ def p_or(p):
     p[0] = OrNode(p[1], p[3])
 
 
-# Error rule for syntax errors
 def p_error(p):
     if p is None:
-        print("Unexpected end of input")
+        raise UnexpectedEndOfInputError()
     else:
-        print("Syntax error in input!", p)
+        raise InputSyntaxError(str(p))
 
 
 parser = yacc.yacc(debug=False, write_tables=False)
+
+
+def parse_formula(source):
+    return parser.parse(source, lexer=lexer)
 

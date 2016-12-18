@@ -4,7 +4,8 @@ from fmse_tool.model.CTLLTS import CTLLTS
 from fmse_tool.model.Transition import Transition
 
 # don't remove this line
-from fmse_tool.parsing.model.tokenizer import tokens
+from fmse_tool.parsing.exception import UnexpectedEndOfInputError, InputSyntaxError
+from fmse_tool.parsing.model.tokenizer import tokens, lexer
 
 
 # EXPRESSION
@@ -69,14 +70,14 @@ def p_empty(p):
 # Error rule for syntax errors
 def p_error(p):
     if p is None:
-        print("Unexpected end of input")
+        raise UnexpectedEndOfInputError()
     else:
-        print("Syntax error in input!", p)
+        raise InputSyntaxError(str(p))
 
 
 parser = yacc.yacc(debug=False, write_tables=False)
 
 
 def parse_ctllts(source):
-    (initial_state, transitions, labellings) = parser.parse(source)
+    (initial_state, transitions, labellings) = parser.parse(source, lexer=lexer)
     return CTLLTS(initial_state=initial_state, transitions=transitions, labellings=labellings)
